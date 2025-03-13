@@ -23,7 +23,6 @@
             color: #e6005c;
             font-weight: bold;
             text-shadow: 2px 2px 4px #ffb6c1;
-            padding: 0;
             background-color: #fff0f5;
             border: 3px solid #ff69b4;
             border-radius: 15px;
@@ -36,7 +35,6 @@
             text-align: center;
             width: 80%;
             height: 300px;
-            overflow: hidden;
         }
 
         .love-message img {
@@ -52,6 +50,7 @@
 
         .love-message:hover img {
             transform: scale(1.2); /* Aumenta a imagem */
+            z-index: 2; /* Garante que a imagem fique sobre a caixa */
         }
 
         .love-message-text {
@@ -62,7 +61,7 @@
             font-size: 2rem;
             color: #fff;
             font-weight: bold;
-            z-index: 1;
+            z-index: 3;
             text-shadow: 2px 2px 4px #ff69b4;
         }
 
