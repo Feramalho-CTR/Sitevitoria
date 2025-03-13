@@ -12,7 +12,7 @@
             background-color: #ffe6e9;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: visible; /* Permite que elementos ultrapassem o body */
             height: 100vh;
             position: relative;
         }
@@ -27,14 +27,14 @@
             border: 3px solid #ff69b4;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
-            position: absolute;
-            z-index: 10;
             top: 20%;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
             width: 80%;
             height: 300px;
+            z-index: 1;
+            overflow: visible; /* Permite que a imagem ultrapasse a caixa */
         }
 
         .love-message img {
@@ -50,7 +50,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 2; /* Garante que a imagem fique sobre a caixa */
+            z-index: 2; /* Garante que a imagem fique acima de tudo */
         }
 
         .love-message-text {
