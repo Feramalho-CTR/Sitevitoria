@@ -34,18 +34,24 @@
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            width: 80%; /* Ajuste a largura */
-            height: 300px; /* Altura fixa da caixa */
+            width: 80%;
+            height: 300px;
+            overflow: hidden;
         }
 
         .love-message img {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%; /* A imagem agora ocupa 100% da largura */
-            height: 100%; /* A imagem ocupa 100% da altura */
-            object-fit: cover; /* A imagem preenche a área sem distorcer */
-            border-radius: 15px; /* Bordas arredondadas para combinar com a caixa */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .love-message:hover img {
+            transform: scale(1.2); /* Aumenta a imagem */
         }
 
         .love-message-text {
@@ -56,7 +62,7 @@
             font-size: 2rem;
             color: #fff;
             font-weight: bold;
-            z-index: 1; /* Garante que o texto fique sobre a imagem */
+            z-index: 1;
             text-shadow: 2px 2px 4px #ff69b4;
         }
 
@@ -99,33 +105,23 @@
     </div>
 
     <script>
-        const numHearts = 50; // Número de corações
+        const numHearts = 50;
         const body = document.body;
 
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
             heart.innerHTML = '❤️';
-            
-            // Posição horizontal aleatória
-            heart.style.left = `${Math.random() * 100}vw`; 
-
-            // Aleatoriedade na animação de queda
+            heart.style.left = `${Math.random() * 100}vw`;
             const animationDelay = Math.random() * 3 + "s";
             heart.style.animationDelay = animationDelay;
-
-            // Aleatoriedade no tamanho do coração
-            heart.style.fontSize = `${1 + Math.random() * 2}rem`; 
-
+            heart.style.fontSize = `${1 + Math.random() * 2}rem`;
             body.appendChild(heart);
-
-            // Remover o coração após a animação
             setTimeout(() => {
                 heart.remove();
-            }, 5000); // Remover após a animação (tempo superior à duração)
+            }, 5000);
         }
 
-        // Criar corações continuamente
         setInterval(createHeart, 200);
     </script>
 </body>
