@@ -17,38 +17,40 @@
             flex-direction: column;
         }
 
-        .love-message {
-            position: relative;
-            max-width: 90vw;
-            max-height: 80vh;
-            border: 3px solid #ff69b4;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        .carousel {
+            width: 80%;
+            max-width: 600px;
             overflow: hidden;
+            position: relative;
             margin-bottom: 20px;
         }
 
-        .love-message img {
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
             width: 100%;
             height: auto;
-            transition: transform 0.3s ease-in-out;
         }
 
-        .love-message:hover img {
-            transform: scale(1.2);
-        }
-
-        .love-message-text {
+        .carousel-button {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            color: #fff;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px #ff69b4;
-            z-index: 2;
-            pointer-events: none;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
         }
 
         .player {
@@ -88,9 +90,14 @@
 </head>
 
 <body>
-    <div class="love-message">
-        <img src="img/nos2.jpg" alt="Imagem do Casal">
-        <div class="love-message-text">Eu te amo</div>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="img/img1.jpg" alt="Imagem 1">
+            <img src="img/img2.jpg" alt="Imagem 2">
+            <img src="img/img3.jpg" alt="Imagem 3">
+        </div>
+        <button class="carousel-button prev" onclick="prevImage()">&#9664;</button>
+        <button class="carousel-button next" onclick="nextImage()">&#9654;</button>
     </div>
 
     <div class="player">
@@ -133,6 +140,25 @@
             audio.src = tracks[currentTrackIndex];
             trackInfo.textContent = `Reproduzindo: Música ${currentTrackIndex + 1}`;
             audio.play();
+        }
+
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images img');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            const offset = -index * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            showImage(currentIndex);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
         }
     </script>
 </body>
