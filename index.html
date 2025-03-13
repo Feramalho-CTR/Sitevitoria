@@ -12,9 +12,8 @@
             background-color: #ffe6e9;
             margin: 0;
             padding: 0;
-            overflow: visible;
+            overflow: hidden;
             height: 100vh;
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,12 +21,12 @@
 
         .love-message {
             position: relative;
-            display: inline-block;
+            max-width: 90vw;
+            max-height: 80vh;
             border: 3px solid #ff69b4;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
             overflow: hidden;
-            max-width: 80%;
         }
 
         .love-message img {
@@ -37,7 +36,7 @@
         }
 
         .love-message:hover img {
-            transform: scale(1.5);
+            transform: scale(1.2);
         }
 
         .love-message-text {
